@@ -62,7 +62,8 @@ public class ConsumerController {
     @GetMapping("/feign")
     public String feign() {
 
-        String response = customApi.hi();
+        String response = customApi.hi(100,
+                "lb");
 
         return response;
     }
