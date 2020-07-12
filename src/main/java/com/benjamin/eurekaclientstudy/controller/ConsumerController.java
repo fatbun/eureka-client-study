@@ -1,5 +1,6 @@
 package com.benjamin.eurekaclientstudy.controller;
 
+import com.benjamin.eurekaclientstudy.controller.api.CustomApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -22,6 +23,8 @@ public class ConsumerController {
     private EurekaDiscoveryClient discoveryClient;
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private CustomApi customApi;
 
     @GetMapping("/client")
     public String client() {
@@ -52,6 +55,14 @@ public class ConsumerController {
 
         String response = restTemplate.getForObject("http://Eureka-Provider/hi",
                 String.class);
+
+        return response;
+    }
+
+    @GetMapping("/feign")
+    public String feign() {
+
+        String response = customApi.hi();
 
         return response;
     }
