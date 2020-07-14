@@ -1,5 +1,6 @@
 package com.benjamin.eurekaconsumerstudy.controller;
 
+import com.benjamin.eurekaconsumerstudy.api.CustomApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
@@ -20,8 +21,8 @@ public class ConsumerController {
     private EurekaDiscoveryClient discoveryClient;
     @Autowired
     private RestTemplate restTemplate;
-//    @Autowired
-//    private CustomApi customApi;
+    @Autowired
+    private CustomApi customApi;
 
     @GetMapping("/client")
     public String client() {
@@ -55,13 +56,13 @@ public class ConsumerController {
 
         return response;
     }
-//
-//    @GetMapping("/feign")
-//    public String feign() {
-//
-//        String response = customApi.hi(100,
-//                "lb");
-//
-//        return response;
-//    }
+
+    @GetMapping("/feign")
+    public String feign() {
+
+        String response = customApi.hi(100,
+                "lb");
+
+        return response;
+    }
 }

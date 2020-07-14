@@ -48,6 +48,12 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.benjamin</groupId>
+            <artifactId>eureka-provider-study</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
