@@ -2,6 +2,7 @@ package com.benjamin.eurekaconsumerstudy.controller;
 
 import com.benjamin.eurekaconsumerstudy.api.CustomApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ public class ConsumerController {
     private RestTemplate restTemplate;
     @Autowired
     private CustomApi customApi;
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("/client")
     public String client() {
@@ -63,6 +66,6 @@ public class ConsumerController {
         String response = customApi.hi(100,
                 "lb");
 
-        return response;
+        return "consumer port:" + port + "->>>>> provider " + response;
     }
 }
