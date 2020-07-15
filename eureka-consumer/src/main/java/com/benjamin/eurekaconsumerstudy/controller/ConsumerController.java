@@ -1,6 +1,7 @@
 package com.benjamin.eurekaconsumerstudy.controller;
 
 import com.benjamin.eurekaconsumerstudy.api.CustomApi;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -51,13 +52,14 @@ public class ConsumerController {
         return response;
     }
 
+    @HystrixCommand(fallbackMethod = "client2Fallback")
     @GetMapping("/client2")
-    public String client2() {
+    public String client2(String name) {
 
         String response = restTemplate.getForObject("http://Eureka-Provider/hi",
                 String.class);
 
-        return response;
+        return response + " " + name;
     }
 
     @GetMapping("/feign")
@@ -68,4 +70,9 @@ public class ConsumerController {
 
         return "consumer port:" + port + "->>>>> provider " + response;
     }
+
+    private String client2Fallback(String name) {
+        return "name:" + name + " client2 fallback了...";
+    }
+
 }

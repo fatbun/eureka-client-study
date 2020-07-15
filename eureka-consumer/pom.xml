@@ -48,12 +48,21 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
 
-
+        <!--依赖provider包-->
         <dependency>
             <groupId>com.benjamin</groupId>
             <artifactId>eureka-provider-study</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.2.3.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
     <dependencyManagement>

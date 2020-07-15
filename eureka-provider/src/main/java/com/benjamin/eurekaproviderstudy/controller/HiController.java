@@ -17,6 +17,8 @@ public class HiController {
     @GetMapping("/hi")
     public String hi(Integer id, String name) {
 
+//        int i = 1 / 0;
+
         String response = "hi, " + id + ":" + name + "!!! my port: " + myPort;
         System.out.println(response);
         return response;
