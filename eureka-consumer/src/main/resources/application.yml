@@ -21,3 +21,8 @@ eureka:
     #设置服务注册中心的URL，用于client和server端交流
     service-url:
       defaultZone: http://euk1.com:7001/eureka/,http://euk2.com:7002/eureka/
+
+# 整合 feign, hystrix
+feign:
+  hystrix:
+    enabled: true

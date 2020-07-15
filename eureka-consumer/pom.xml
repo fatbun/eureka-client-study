@@ -48,7 +48,7 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
 
-
+        <!--依赖provider包-->
         <dependency>
             <groupId>com.benjamin</groupId>
             <artifactId>eureka-provider-study</artifactId>
