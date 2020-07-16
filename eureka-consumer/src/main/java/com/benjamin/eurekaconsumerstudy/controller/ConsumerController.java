@@ -2,6 +2,8 @@ package com.benjamin.eurekaconsumerstudy.controller;
 
 import com.benjamin.eurekaconsumerstudy.api.CustomApi;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 @RestController
 public class ConsumerController {
+    private final Logger logger = LoggerFactory.getLogger(ConsumerController.class);
 
     @Autowired
     private EurekaDiscoveryClient discoveryClient;
@@ -68,7 +71,10 @@ public class ConsumerController {
         String response = customApi.hi(100,
                 "lb");
 
-        return "consumer port:" + port + "->>>>> provider " + response;
+        String resp = "consumer port:" + port + "->>>>> provider " + response;
+
+        logger.info(resp);
+        return resp;
     }
 
     private String client2Fallback(String name) {
