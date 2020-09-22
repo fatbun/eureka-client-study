@@ -21,6 +21,11 @@ public class CustomApiFallbackFactory implements FallbackFactory<CustomApi> {
 
                 return "/hi fallbackFactory了...";
             }
+
+            @Override
+            public String bye() {
+                return "/bye fallbackFactory了...";
+            }
         };
     }
 }

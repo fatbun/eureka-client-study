@@ -1,6 +1,7 @@
 package com.benjamin.eurekaconsumerstudy.controller;
 
 import com.benjamin.eurekaconsumerstudy.api.CustomApi;
+import com.benjamin.eurekaconsumerstudy.api.CustomApi2;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,8 @@ public class ConsumerController {
     private RestTemplate restTemplate;
     @Autowired
     private CustomApi customApi;
+    @Autowired
+    private CustomApi2 customApi2;
     @Value("${server.port}")
     private String port;
 
@@ -69,6 +72,11 @@ public class ConsumerController {
                 "lb");
 
         return "consumer port:" + port + "->>>>> provider " + response;
+    }
+
+    @GetMapping("/config")
+    public String config(){
+        return port;
     }
 
     private String client2Fallback(String name) {

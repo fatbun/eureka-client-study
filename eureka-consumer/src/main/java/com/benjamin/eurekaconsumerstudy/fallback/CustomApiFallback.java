@@ -13,4 +13,9 @@ public class CustomApiFallback implements CustomApi {
     public String hi(Integer id, String name) {
         return "/hi fallback了...";
     }
+
+    @Override
+    public String bye() {
+        return "bye bye... fallback";
+    }
 }
