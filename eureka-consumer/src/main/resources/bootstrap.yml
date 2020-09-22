@@ -8,12 +8,12 @@ spring:
         enabled: true
         # config server 的服务id
         service-id: config-server
-  zipkin:
-    base-url: http://localhost:9411/
-    #采样比例1秒
-  sleuth:
-    sampler:
-      rate: 1
+#  zipkin:
+#    base-url: http://localhost:9411/
+#    #采样比例1秒
+#  sleuth:
+#    sampler:
+#      rate: 1
 
 eureka:
   # eureka.instance.appname

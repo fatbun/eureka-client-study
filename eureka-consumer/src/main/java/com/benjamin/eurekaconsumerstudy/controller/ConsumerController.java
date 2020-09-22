@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author Ben Li.
  * @since: 2020/7/10 11:33 上午
  */
+@RefreshScope
 @RestController
 public class ConsumerController {
     private final Logger logger = LoggerFactory.getLogger(ConsumerController.class);
@@ -33,6 +35,8 @@ public class ConsumerController {
     private CustomApi2 customApi2;
     @Value("${server.port}")
     private String port;
+    @Value("${myname}")
+    private String myname;
 
     @GetMapping("/client")
     public String client() {
@@ -82,7 +86,7 @@ public class ConsumerController {
 
     @GetMapping("/config")
     public String config(){
-        return port;
+        return myname;
     }
 
     private String client2Fallback(String name) {

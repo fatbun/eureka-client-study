@@ -5,3 +5,13 @@ server:
 feign:
   hystrix:
     enabled: true
+
+# actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
