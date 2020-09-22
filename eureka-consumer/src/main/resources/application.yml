@@ -1,7 +1,6 @@
 server:
   port: 8100
 
-
 # 整合 feign, hystrix
 feign:
   hystrix:
